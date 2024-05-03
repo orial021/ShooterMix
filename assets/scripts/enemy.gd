@@ -9,7 +9,7 @@ var SPEED
 
 
 func _process(delta) ->void:
-	SPEED = GLOBAL.speed
+	SPEED = GLOBAL.speed + GLOBAL.level
 	match explosion:
 		false: global_position.z += SPEED * delta
 	
@@ -33,9 +33,8 @@ func _on_area_3d_area_entered(area) -> void:
 	if area.is_in_group("Shot3D"):
 		explosion_ctrl(Vector3(1, 1, 1))
 		GLOBAL.points += 10
-		if GLOBAL.points % 50 ==0:
-			GLOBAL.speed += 1
-			GLOBAL.level += 1
+		GLOBAL.can_change = true
+		
 
 
 func _on_area_3d_body_entered(body):

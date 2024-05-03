@@ -1,19 +1,25 @@
 extends CanvasLayer
 
+
 func _ready() -> void:
 	$Scoreboard/ColorRect.visible = false
 	
 func _process(_delta):
 	%Credits.text = "SPACESHIPS: " + str(GLOBAL.life)
 	%Score.text = "SCORE: " + str(GLOBAL.score)
-	if GLOBAL.score % 1000 == 0 and GLOBAL.score != 0:
+	$Scoreboard/MarginContainer/Level.text = "level " + str(GLOBAL.level)
+	
+	if GLOBAL.score % 1000 == 0 and GLOBAL.can_change:
 		$Scoreboard/ColorRect.visible = true
-		$Scoreboard/ColorRect/Animation.play("change_scene")
+		$Scoreboard/ColorRect/Animated.play("changescene")
 		
 
 func _on_animation_animation_finished(anim_name):
 	match anim_name:
-		"change_scene":
+		"changescene":
+			GLOBAL.level += 1
+			print(GLOBAL.speed)
+			GLOBAL.can_change = false
 			get_tree().change_scene_to_file("res://Scenes/level3D.tscn")
 
 

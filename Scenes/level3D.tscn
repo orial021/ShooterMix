@@ -5,7 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://c4d6s5ya4hpno" path="res://assets/audios/DavidKBD - Cosmic Pack 02 - Galactic Pulse-full.ogg" id="4_7vfay"]
 [ext_resource type="PackedScene" uid="uid://dv1xglj3l6gp2" path="res://Scenes/player3D.tscn" id="6_jv1mv"]
 [ext_resource type="PackedScene" uid="uid://cfpjcwg7jmw7p" path="res://Scenes/gui3D.tscn" id="6_p3nrd"]
-[ext_resource type="PackedScene" uid="uid://bt7sc6vp545ee" path="res://scenes/chunk.tscn" id="6_wbpio"]
+[ext_resource type="PackedScene" uid="uid://bt7sc6vp545ee" path="res://Scenes/chunk.tscn" id="6_wbpio"]
 
 [sub_resource type="Environment" id="Environment_q7n8c"]
 background_mode = 1

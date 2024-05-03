@@ -5,7 +5,7 @@ var SPEED : int = 210
 @onready var explosion : bool = false
 
 func _ready() -> void:
-	SPEED = GLOBAL.speed*70
+	SPEED = (GLOBAL.speed + GLOBAL.level) * 70
 	
 func _process(delta) -> void:
 	match explosion:
@@ -21,13 +21,14 @@ func _on_area_2d_area_entered(area) -> void:
 	if area.is_in_group("Shot"):
 		explosion_ctrl()
 		GLOBAL.score += 100
+		GLOBAL.can_change = true
 
 
 func _on_area_2d_body_entered(body) -> void:
 	if body is Player2D:
 		explosion_ctrl()
-		GLOBAL.credits -= 1
-		if GLOBAL.credits <= 0:
+		GLOBAL.life -= 1
+		if GLOBAL.life <= 0:
 			body.queue_free()
 		else:
 			return

@@ -19,7 +19,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_6bbc8"]
-resource_name = "change_scene"
+resource_name = "changescene"
 length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -37,7 +37,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_6l3j4"]
 _data = {
 "RESET": SubResource("Animation_ggdwd"),
-"change_scene": SubResource("Animation_6bbc8")
+"changescene": SubResource("Animation_6bbc8")
 }
 
 [node name="GUI" type="CanvasLayer"]
@@ -111,10 +111,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="Animation" type="AnimationPlayer" parent="Scoreboard/ColorRect"]
+[node name="Animated" type="AnimationPlayer" parent="Scoreboard/ColorRect"]
 libraries = {
 "": SubResource("AnimationLibrary_6l3j4")
 }
 
 [connection signal="pressed" from="Scoreboard/MarginContainer/Pause" to="." method="_on_insert_coin_pressed"]
-[connection signal="animation_finished" from="Scoreboard/ColorRect/Animation" to="." method="_on_animation_animation_finished"]
+[connection signal="animation_finished" from="Scoreboard/ColorRect/Animated" to="." method="_on_animation_animation_finished"]

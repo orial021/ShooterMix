@@ -6,7 +6,7 @@ class_name Player2D
 const SPEED = 300
 
 
-func _process(delta):
+func _process(_delta):
 	anim_ctrl()
 	motion_ctrl()
 	

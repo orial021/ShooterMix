@@ -8,10 +8,6 @@ var SPEED = 2
 
 func _ready() -> void:
 	$Settings/Timer.start()
-	GLOBAL.score = 0
-	GLOBAL.points = 0
-	GLOBAL.life = 1
-	GLOBAL.speed = 3
 
 func _process(delta):
 	$Settings/Path3D/PathFollow3D.set_progress($Settings/Path3D/PathFollow3D.get_progress() + SPEED * delta)
