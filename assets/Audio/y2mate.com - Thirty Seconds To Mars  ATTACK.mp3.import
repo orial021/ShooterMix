@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cj7bduxoenlrd"
+path="res://.godot/imported/y2mate.com - Thirty Seconds To Mars  ATTACK.mp3-2e22bd3a57636bd0d8f00e15bf4951a9.mp3str"
+
+[deps]
+
+source_file="res://assets/Audio/y2mate.com - Thirty Seconds To Mars  ATTACK.mp3"
+dest_files=["res://.godot/imported/y2mate.com - Thirty Seconds To Mars  ATTACK.mp3-2e22bd3a57636bd0d8f00e15bf4951a9.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

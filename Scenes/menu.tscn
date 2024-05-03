@@ -1,0 +1,158 @@
+[gd_scene load_steps=8 format=3 uid="uid://bnbu5elwc14k"]
+
+[ext_resource type="Theme" uid="uid://bu4b0ikeoxsy4" path="res://assets/fonts/theme.tres" id="1_5by5l"]
+[ext_resource type="Script" path="res://Scripts/menu.gd" id="2_kj621"]
+[ext_resource type="Texture2D" uid="uid://bheya6sx5x6w6" path="res://assets/images/bg-preview-big.png" id="3_7fk8w"]
+
+[sub_resource type="Animation" id="Animation_0v168"]
+resource_name = "Fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y48tk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_kovee"]
+resource_name = "Fade_out"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ymmgp"]
+_data = {
+"Fade_in": SubResource("Animation_0v168"),
+"Fade_out": SubResource("Animation_kovee"),
+"RESET": SubResource("Animation_y48tk")
+}
+
+[node name="Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.00038, 0.997992)
+theme = ExtResource("1_5by5l")
+script = ExtResource("2_kj621")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = -2.0
+offset_right = 177.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.786393, 1)
+texture = ExtResource("3_7fk8w")
+
+[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 88.0
+offset_right = 88.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.784448, 0.992547)
+
+[node name="Main" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="VBoxContainer" parent="TextureRect/MarginContainer/Main"]
+layout_mode = 2
+
+[node name="Title_1" type="Label" parent="TextureRect/MarginContainer/Main/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Isa's Space"
+horizontal_alignment = 1
+
+[node name="Title_2" type="Label" parent="TextureRect/MarginContainer/Main/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 45
+text = "SHOOTER 2D"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/Main"]
+layout_mode = 2
+alignment = 1
+
+[node name="Start" type="Button" parent="TextureRect/MarginContainer/Main/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+action_mode = 0
+text = "START GAME"
+
+[node name="Exit" type="Button" parent="TextureRect/MarginContainer/Main/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "EXIT
+"
+
+[node name="CopyRight" type="Label" parent="TextureRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 12
+text = "DISEÑADO POR JAIRO BELEN"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fade" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Fade"]
+libraries = {
+"": SubResource("AnimationLibrary_ymmgp")
+}
+
+[connection signal="pressed" from="TextureRect/MarginContainer/Main/HBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="TextureRect/MarginContainer/Main/HBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[connection signal="animation_finished" from="Fade/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

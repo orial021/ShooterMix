@@ -1,0 +1,120 @@
+[gd_scene load_steps=6 format=3 uid="uid://hf81ixqbpjmm"]
+
+[ext_resource type="Script" path="res://Scripts/gui.gd" id="1_4rg2p"]
+[ext_resource type="Theme" uid="uid://bu4b0ikeoxsy4" path="res://assets/fonts/theme.tres" id="2_xk4kh"]
+
+[sub_resource type="Animation" id="Animation_ggdwd"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_6bbc8"]
+resource_name = "change_scene"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2, 1.4, 1.5, 1.7, 1.8, 1.9, 2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6l3j4"]
+_data = {
+"RESET": SubResource("Animation_ggdwd"),
+"change_scene": SubResource("Animation_6bbc8")
+}
+
+[node name="GUI" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_4rg2p")
+
+[node name="Scoreboard" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_xk4kh")
+
+[node name="MarginContainer" type="MarginContainer" parent="Scoreboard"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+auto_translate = false
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+
+[node name="Score" type="Label" parent="Scoreboard/MarginContainer"]
+unique_name_in_owner = true
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+auto_translate = false
+theme_override_font_sizes/font_size = 20
+text = "SCORE: 0"
+vertical_alignment = 1
+
+[node name="Level" type="Label" parent="Scoreboard/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "LEVEL 1 EASY"
+
+[node name="Credits" type="Label" parent="Scoreboard/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 20
+text = "CREDITS: 1"
+
+[node name="Pause" type="Button" parent="Scoreboard/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+focus_mode = 0
+theme_override_font_sizes/font_size = 20
+text = "PAUSE"
+
+[node name="ColorRect" type="ColorRect" parent="Scoreboard"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+offset_right = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Animation" type="AnimationPlayer" parent="Scoreboard/ColorRect"]
+libraries = {
+"": SubResource("AnimationLibrary_6l3j4")
+}
+
+[connection signal="pressed" from="Scoreboard/MarginContainer/Pause" to="." method="_on_insert_coin_pressed"]
+[connection signal="animation_finished" from="Scoreboard/ColorRect/Animation" to="." method="_on_animation_animation_finished"]

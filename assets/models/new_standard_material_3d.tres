@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://cdo7kdcv5pxiw"]
+
+[ext_resource type="Texture2D" uid="uid://bvc3chm5qiq8n" path="res://assets/materials/Space3D/Bakes/T_Environment_diffuse.png" id="1_ao86p"]
+
+[resource]
+albedo_texture = ExtResource("1_ao86p")

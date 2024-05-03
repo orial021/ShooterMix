@@ -1,0 +1,84 @@
+[gd_scene load_steps=11 format=3 uid="uid://kf0vyyv25q68"]
+
+[ext_resource type="Script" path="res://Scripts/player.gd" id="1_xkmrb"]
+[ext_resource type="Texture2D" uid="uid://bnsbflnllr0y5" path="res://assets/images/Player/player2.png" id="2_nq8gy"]
+[ext_resource type="PackedScene" uid="uid://jybeclpwt24v" path="res://Scenes/shot.tscn" id="2_sxtei"]
+[ext_resource type="Texture2D" uid="uid://prfooqar0w7m" path="res://assets/images/Player/player1.png" id="3_oqxq2"]
+[ext_resource type="Texture2D" uid="uid://cjy0xfbsglrjf" path="res://assets/images/Player/player3.png" id="4_rr1wk"]
+[ext_resource type="Texture2D" uid="uid://8r8kcv12i4ld" path="res://assets/images/shoot/flash.png" id="5_ews8y"]
+[ext_resource type="AudioStream" uid="uid://bgrtt32s7whff" path="res://assets/Audio/Sound FX/shot 1.wav" id="6_lio68"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nin47"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nq8gy")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_oqxq2")
+}],
+"loop": false,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_rr1wk")
+}],
+"loop": true,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5783a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ews8y")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"Flash",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_66l0q"]
+size = Vector2(26, 10)
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(-1, 0)
+scale = Vector2(3.0816, 2.85293)
+motion_mode = 1
+script = ExtResource("1_xkmrb")
+shot = ExtResource("2_sxtei")
+
+[node name="Spaceship" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_nin47")
+animation = &"Idle"
+autoplay = "Idle"
+
+[node name="Flash" type="AnimatedSprite2D" parent="."]
+position = Vector2(18.5, 0)
+sprite_frames = SubResource("SpriteFrames_5783a")
+animation = &"Flash"
+frame = 1
+
+[node name="Collision" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_66l0q")
+
+[node name="Settings" type="Node2D" parent="."]
+
+[node name="ShotSpawn" type="Marker2D" parent="Settings"]
+position = Vector2(13, 0)
+
+[node name="AudioShot" type="AudioStreamPlayer2D" parent="Settings"]
+stream = ExtResource("6_lio68")
+volume_db = -12.4

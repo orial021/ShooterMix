@@ -1,0 +1,9 @@
+res://assets/fonts/theme.tres::4be246a21e1f5298dd046628025475b4::1714244628::res://.godot/exported/133200997/export-ad01b9ec76d111328889715bb3df11b6-theme.res
+res://Scenes/apple.tscn::23f5086ae7e404f6afc48481ea4fa389::1714244648::res://.godot/exported/133200997/export-9a7be7603bd0f6caf2ebef6702440f5c-apple.scn
+res://Scenes/enemy.tscn::58b90130f9270093d1fd5a2a6b88efbb::1714244648::res://.godot/exported/133200997/export-7111e2a4ba75c4a329f0f9553f2950f2-enemy.scn
+res://Scenes/game_over.tscn::3d77dc6b901b1d61d39dadd1e7f5a1c1::1714244647::res://.godot/exported/133200997/export-33c320c97f44f546398d5119030678b4-game_over.scn
+res://Scenes/gui.tscn::0556793886bb02434d87035604e37847::1714244647::res://.godot/exported/133200997/export-6fa2297ac3b46430f7d7000f270f4dfb-gui.scn
+res://Scenes/level.tscn::b09988428469e87ab0176fadd30f2849::1714244647::res://.godot/exported/133200997/export-509c53c765b75d897e8314a88ec6c376-level.scn
+res://Scenes/menu.tscn::d47059243aec78c6d0ea6fc9bb9e2157::1714244647::res://.godot/exported/133200997/export-53a0af8f00fbc899d4d541c34a803049-menu.scn
+res://Scenes/player.tscn::ac679ce98d9c0104af01f7d18a3f9fdc::1714244647::res://.godot/exported/133200997/export-1753c997600d68ab5d20ae99fddb15c6-player.scn
+res://Scenes/shot.tscn::d154ec96f2dd6f486b53825f1ba40606::1714244648::res://.godot/exported/133200997/export-92e0154f0d6dbe3ba3c85901657c3f99-shot.scn

@@ -1,0 +1,65 @@
+[gd_scene load_steps=3 format=3 uid="uid://dyhwk8g4vsukw"]
+
+[ext_resource type="Theme" uid="uid://bu4b0ikeoxsy4" path="res://assets/fonts/theme.tres" id="1_fqd31"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="2_sw6jh"]
+
+[node name="Game_over" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_fqd31")
+script = ExtResource("2_sw6jh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.00392157, 0.00392157, 0.00392157, 1)
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Main" type="VBoxContainer" parent="ColorRect/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Title" type="VBoxContainer" parent="ColorRect/MarginContainer/Main"]
+layout_mode = 2
+
+[node name="GameOver" type="Label" parent="ColorRect/MarginContainer/Main/Title"]
+layout_mode = 2
+text = "HAS MORIDO"
+horizontal_alignment = 1
+
+[node name="Mesagge" type="Label" parent="ColorRect/MarginContainer/Main/Title"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 25
+text = "DE FORMA HULIMILLANTE Y VERGONZOSA"
+horizontal_alignment = 1
+
+[node name="Buttons" type="HBoxContainer" parent="ColorRect/MarginContainer/Main/Title"]
+layout_mode = 2
+alignment = 1
+
+[node name="Restart" type="Button" parent="ColorRect/MarginContainer/Main/Title/Buttons"]
+layout_mode = 2
+text = "REINICIAR"
+
+[node name="Exit" type="Button" parent="ColorRect/MarginContainer/Main/Title/Buttons"]
+layout_mode = 2
+text = "EXIT"
+
+[connection signal="pressed" from="ColorRect/MarginContainer/Main/Title/Buttons/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="ColorRect/MarginContainer/Main/Title/Buttons/Exit" to="." method="_on_exit_pressed"]

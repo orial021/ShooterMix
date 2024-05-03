@@ -1,0 +1,97 @@
+[gd_scene load_steps=11 format=3 uid="uid://cevkax6c3ykvk"]
+
+[ext_resource type="Script" path="res://Scripts/level.gd" id="1_3o71s"]
+[ext_resource type="PackedScene" uid="uid://d0r6ir7cykx45" path="res://Scenes/enemy.tscn" id="2_lbgcr"]
+[ext_resource type="Texture2D" uid="uid://ckk6yoj2qe0au" path="res://assets/images/bg-back.png" id="3_hxlqo"]
+[ext_resource type="PackedScene" uid="uid://dhq8trvkvetbe" path="res://Scenes/apple.tscn" id="3_mfvu7"]
+[ext_resource type="Texture2D" uid="uid://dn1owaq456cu2" path="res://assets/images/bg-stars.png" id="4_kptb4"]
+[ext_resource type="AudioStream" uid="uid://b1sj7xy45wtaf" path="res://assets/Audio/8bit-mix-56351.mp3" id="4_l0dy5"]
+[ext_resource type="Texture2D" uid="uid://ckqgqhn8k8rm3" path="res://assets/images/bg-planet.png" id="5_sj462"]
+[ext_resource type="PackedScene" uid="uid://kf0vyyv25q68" path="res://Scenes/player.tscn" id="7_djw8u"]
+[ext_resource type="PackedScene" uid="uid://hf81ixqbpjmm" path="res://Scenes/gui.tscn" id="8_fvkbw"]
+
+[sub_resource type="Curve2D" id="Curve2D_4oi0g"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 632, 14, 0, 0, 0, 0, 638, 460, 0, 0, 0, 0, 645, 460, 0, 0, 0, 0, 648, 21, 0, 0, 0, 0, 629, 17)
+}
+point_count = 5
+
+[node name="Level" type="Node2D" groups=["Level"]]
+script = ExtResource("1_3o71s")
+enemy = ExtResource("2_lbgcr")
+apple = ExtResource("3_mfvu7")
+
+[node name="Settings" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Settings"]
+stream = ExtResource("4_l0dy5")
+autoplay = true
+
+[node name="Timer" type="Timer" parent="Settings"]
+wait_time = 1.4
+autostart = true
+
+[node name="Timer2" type="Timer" parent="Settings"]
+wait_time = 6.0
+autostart = true
+
+[node name="Background" type="Node" parent="."]
+
+[node name="Back" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Back"]
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Back/ParallaxLayer"]
+position = Vector2(1, 0)
+scale = Vector2(2.34758, 2.98528)
+texture = ExtResource("3_hxlqo")
+centered = false
+
+[node name="Stars" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Stars"]
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Stars/ParallaxLayer"]
+scale = Vector2(2.35494, 2.97832)
+texture = ExtResource("4_kptb4")
+centered = false
+
+[node name="Planet_1" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Planet_1"]
+motion_mirroring = Vector2(1280, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Planet_1/ParallaxLayer"]
+scale = Vector2(2.3496, 2.98519)
+texture = ExtResource("5_sj462")
+centered = false
+
+[node name="Planet_2" type="ParallaxBackground" parent="Background"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Planet_2"]
+motion_mirroring = Vector2(640, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Background/Planet_2/ParallaxLayer"]
+visible = false
+scale = Vector2(2.36321, 2.67102)
+texture = ExtResource("5_sj462")
+centered = false
+offset = Vector2(272, 0)
+flip_v = true
+
+[node name="PathSpawn" type="Path2D" parent="."]
+curve = SubResource("Curve2D_4oi0g")
+
+[node name="PathFollow" type="PathFollow2D" parent="PathSpawn"]
+position = Vector2(632, 14)
+rotation = 1.55734
+
+[node name="Player" parent="." instance=ExtResource("7_djw8u")]
+position = Vector2(47, 241)
+
+[node name="GUI" parent="." instance=ExtResource("8_fvkbw")]
+
+[connection signal="timeout" from="Settings/Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Settings/Timer2" to="." method="_on_timer_2_timeout"]
