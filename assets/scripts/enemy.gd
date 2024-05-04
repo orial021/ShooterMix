@@ -9,7 +9,7 @@ var SPEED
 
 
 func _process(delta) ->void:
-	SPEED = GLOBAL.speed + GLOBAL.level
+	SPEED = GLOBAL.speed + GLOBAL.level*1.2
 	match explosion:
 		false: global_position.z += SPEED * delta
 	

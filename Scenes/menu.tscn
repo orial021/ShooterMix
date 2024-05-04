@@ -80,7 +80,7 @@ offset_right = 177.0
 offset_bottom = -2.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(0.786393, 1)
+scale = Vector2(0.782679, 1.00199)
 texture = ExtResource("3_7fk8w")
 
 [node name="MarginContainer" type="MarginContainer" parent="TextureRect"]

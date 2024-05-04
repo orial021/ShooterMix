@@ -1,11 +1,11 @@
 extends Node2D
 
-var SPEED : int = 210
+var SPEED : int
 
 @onready var explosion : bool = false
 
 func _ready() -> void:
-	SPEED = (GLOBAL.speed + GLOBAL.level) * 70
+	SPEED = (GLOBAL.speed + GLOBAL.level) * 60
 	
 func _process(delta) -> void:
 	match explosion:

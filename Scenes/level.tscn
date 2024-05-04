@@ -40,7 +40,7 @@ autostart = true
 [node name="Back" type="ParallaxBackground" parent="Background"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Back"]
-motion_mirroring = Vector2(640, 0)
+motion_mirroring = Vector2(638, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Back/ParallaxLayer"]
 position = Vector2(1, 0)
@@ -71,14 +71,14 @@ centered = false
 [node name="Planet_2" type="ParallaxBackground" parent="Background"]
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Background/Planet_2"]
-motion_mirroring = Vector2(640, 0)
+scale = Vector2(0.946519, 1.21793)
+motion_mirroring = Vector2(1280, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Background/Planet_2/ParallaxLayer"]
-visible = false
-scale = Vector2(2.36321, 2.67102)
+position = Vector2(644.467, 1.64213)
+scale = Vector2(2.7327, 2.86319)
 texture = ExtResource("5_sj462")
 centered = false
-offset = Vector2(272, 0)
 flip_v = true
 
 [node name="PathSpawn" type="Path2D" parent="."]
