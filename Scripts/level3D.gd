@@ -1,7 +1,7 @@
 extends Node3D
 
-var enemy : PackedScene = preload("res://scenes/enemy3D.tscn")
-var extra_life : PackedScene = preload("res://scenes/extra_life.tscn")
+@export var enemy : PackedScene
+@export var extra_life : PackedScene
 
 var SPEED = 2
 
@@ -23,3 +23,5 @@ func _on_timer_2_timeout() -> void:
 	var extra_life_instance = extra_life.instantiate( )
 	add_child(extra_life_instance)
 	extra_life_instance.set_global_position($Settings/Path3D/PathFollow3D.get_global_position())
+
+ 

@@ -70,7 +70,7 @@ theme_override_constants/margin_right = 6
 unique_name_in_owner = true
 clip_contents = true
 layout_mode = 2
-size_flags_horizontal = 4
+size_flags_horizontal = 8
 size_flags_vertical = 0
 auto_translate = false
 theme_override_font_sizes/font_size = 20
@@ -80,7 +80,7 @@ vertical_alignment = 1
 [node name="Level" type="Label" parent="Scoreboard/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 8
+size_flags_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "LEVEL 1 EASY"
 
@@ -92,15 +92,30 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 20
 text = "CREDITS: 1"
 
-[node name="Pause" type="Button" parent="Scoreboard/MarginContainer"]
+[node name="Pause" type="MenuButton" parent="Scoreboard/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 8
-focus_mode = 0
 theme_override_font_sizes/font_size = 20
 text = "PAUSE"
+item_count = 3
+popup/item_0/text = "REANUDAR"
+popup/item_0/id = 0
+popup/item_1/text = "GUARDAR"
+popup/item_1/checked = true
+popup/item_1/id = 1
+popup/item_2/text = "MENU"
+popup/item_2/id = 2
+
+[node name="Bullets" type="Label" parent="Scoreboard/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "BULLETS: "
 
 [node name="ColorRect" type="ColorRect" parent="Scoreboard"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

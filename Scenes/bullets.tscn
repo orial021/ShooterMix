@@ -1,0 +1,96 @@
+[gd_scene load_steps=13 format=3 uid="uid://bye3dnpn3x323"]
+
+[ext_resource type="Script" path="res://Scripts/bullets.gd" id="1_6wtxm"]
+[ext_resource type="Texture2D" uid="uid://c1ftgyvvwrd3x" path="res://assets/images/powerups/11.png" id="2_2jgyg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mledy"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(0, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqfx5"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(32, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fggki"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(64, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4pxgp"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(96, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4utgf"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(128, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ui786"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(160, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_chgfu"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(192, 0, 32, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trumf"]
+atlas = ExtResource("2_2jgyg")
+region = Rect2(224, 0, 32, 48)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_y717y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mledy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqfx5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fggki")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4pxgp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4utgf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ui786")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_chgfu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trumf")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thyg4"]
+size = Vector2(0.194862, 0.103883)
+
+[node name="Bullets" type="Node2D"]
+script = ExtResource("1_6wtxm")
+
+[node name="Bullet" type="Area2D" parent="."]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Bullet"]
+position = Vector2(0.270304, 0.25)
+scale = Vector2(1.12703, 1.125)
+sprite_frames = SubResource("SpriteFrames_y717y")
+autoplay = "default"
+frame = 7
+frame_progress = 0.530459
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bullet"]
+position = Vector2(0.5, 1.5)
+scale = Vector2(118.032, -452.43)
+shape = SubResource("RectangleShape2D_thyg4")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="Bullet"]
+position = Vector2(0.2703, 0.25)
+scale = Vector2(0.890575, 0.856058)
+
+[connection signal="body_entered" from="Bullet" to="." method="_on_bullet_body_entered"]
+[connection signal="screen_exited" from="Bullet/VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

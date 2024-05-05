@@ -6,6 +6,7 @@ func _ready() -> void:
 	GLOBAL.points = 0
 	GLOBAL.speed = 3
 	GLOBAL.level = 1
+	GLOBAL.can_change = false
 	
 
 func _on_restart_pressed():

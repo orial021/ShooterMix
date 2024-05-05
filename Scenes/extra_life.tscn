@@ -1,6 +1,6 @@
 [gd_scene load_steps=68 format=3 uid="uid://cgne3fcuxfin1"]
 
-[ext_resource type="Script" path="res://assets/scripts/extra_life.gd" id="1_aytf4"]
+[ext_resource type="Script" path="res://Scripts/extra_life.gd" id="1_aytf4"]
 [ext_resource type="ArrayMesh" uid="uid://5chgwlgr4htw" path="res://assets/models/MicroRecon.obj" id="2_ki822"]
 [ext_resource type="Material" uid="uid://dnkfnacle3fkt" path="res://assets/models/material_two.tres" id="3_0dq1g"]
 [ext_resource type="Texture2D" uid="uid://yqms1rvaaikj" path="res://assets/images/Small_Iceball_9x24.png" id="4_oovw6"]

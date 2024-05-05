@@ -1,18 +1,16 @@
 [gd_scene load_steps=196 format=3 uid="uid://dv1xglj3l6gp2"]
 
 [ext_resource type="ArrayMesh" uid="uid://dfdcwbs51c34d" path="res://assets/models/RedFighter.obj" id="1_c4g05"]
-[ext_resource type="Script" path="res://assets/scripts/player.gd" id="1_qwe0e"]
-[ext_resource type="Texture2D" uid="uid://bu1ocq1qrnjpy" path="res://assets/models/RedFighter.png" id="2_qn4ek"]
+[ext_resource type="Script" path="res://Scripts/player3D.gd" id="1_qwe0e"]
+[ext_resource type="PackedScene" uid="uid://dgk4ugf0362jc" path="res://Scenes/shot3D.tscn" id="2_6c6s4"]
 [ext_resource type="Texture2D" uid="uid://ccgb0mxslaqii" path="res://assets/images/Fireball_68x9.png" id="3_el5ku"]
+[ext_resource type="Material" uid="uid://26ey55rdm70y" path="res://Scenes/player3D.tres" id="4_7r1q1"]
 [ext_resource type="Texture2D" uid="uid://yqms1rvaaikj" path="res://assets/images/Small_Iceball_9x24.png" id="4_ajh7t"]
 [ext_resource type="Texture2D" uid="uid://chlpkkd703xgi" path="res://assets/images/Small_Fireball_10x26.png" id="6_1ruc2"]
 [ext_resource type="Texture2D" uid="uid://d4jbkx1r4siql" path="res://assets/images/crosshair158.png" id="6_70d8r"]
 [ext_resource type="AudioStream" uid="uid://dyixkglg2whg4" path="res://assets/audios/jet-sound-militar-185708.mp3" id="6_de7v5"]
 [ext_resource type="AudioStream" uid="uid://dk47o8n20nfbm" path="res://assets/audios/door-open-sound-effect-94368.mp3" id="7_i4kdd"]
 [ext_resource type="AudioStream" uid="uid://nm5cj0vrriat" path="res://assets/audios/blaster-2-81267.mp3" id="8_00gun"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mtucp"]
-albedo_texture = ExtResource("2_qn4ek")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4swvk"]
 atlas = ExtResource("3_el5ku")
@@ -1315,12 +1313,13 @@ size = Vector3(0.788351, 0.578967, 4)
 [node name="Player" type="CharacterBody3D"]
 collision_mask = 6
 script = ExtResource("1_qwe0e")
+shot = ExtResource("2_6c6s4")
 
 [node name="Spaceship" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.12, 0, 0, 0, 0.12, 0, 0, 0, 0.12, -0.47346, -0.491067, 0.459484)
 gi_mode = 2
 mesh = ExtResource("1_c4g05")
-surface_material_override/0 = SubResource("StandardMaterial3D_mtucp")
+surface_material_override/0 = ExtResource("4_7r1q1")
 
 [node name="Fire_1" type="AnimatedSprite3D" parent="Spaceship"]
 transform = Transform3D(0.0504887, -4.84568, -0.367665, -0.0957482, -0.847398, 2.10414, -4.9732, -0.0328793, -0.0442431, 6.38351, 4.57503, -6.2388)
@@ -1381,4 +1380,3 @@ max_distance = 8.0
 
 [connection signal="area_entered" from="Settings/Crosshair" to="." method="_on_crosshair_area_entered"]
 [connection signal="area_exited" from="Settings/Crosshair" to="." method="_on_crosshair_area_exited"]
-[connection signal="body_entered" from="Settings/Crosshair" to="." method="_on_crosshair_body_entered"]

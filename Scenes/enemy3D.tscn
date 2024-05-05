@@ -1,6 +1,6 @@
 [gd_scene load_steps=153 format=3 uid="uid://25b37uwkfqdu"]
 
-[ext_resource type="Script" path="res://assets/scripts/enemy.gd" id="1_rvix1"]
+[ext_resource type="Script" path="res://Scripts/enemy3D.gd" id="1_rvix1"]
 [ext_resource type="ArrayMesh" uid="uid://b3itqv7m7d0vr" path="res://assets/models/UltravioletIntruder.obj" id="2_4yn24"]
 [ext_resource type="Texture2D" uid="uid://er5ev40qdv1d" path="res://assets/models/GalactixRacer.png" id="3_5qqdc"]
 [ext_resource type="Texture2D" uid="uid://bnoes5curwpho" path="res://assets/images/Poisonball_65x9.png" id="4_wo731"]

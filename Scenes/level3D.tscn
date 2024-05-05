@@ -1,6 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://dq4uia6acxj6h"]
+[gd_scene load_steps=15 format=3 uid="uid://dq4uia6acxj6h"]
 
-[ext_resource type="Script" path="res://assets/scripts/level.gd" id="1_3h8s7"]
+[ext_resource type="Script" path="res://Scripts/level3D.gd" id="1_3h8s7"]
+[ext_resource type="PackedScene" uid="uid://25b37uwkfqdu" path="res://Scenes/enemy3D.tscn" id="2_3dmm8"]
+[ext_resource type="PackedScene" uid="uid://cgne3fcuxfin1" path="res://Scenes/extra_life.tscn" id="3_41b13"]
 [ext_resource type="CameraAttributesPractical" uid="uid://blngj2eu55gq8" path="res://assets/settings/new_camera_attributes_practical.tres" id="3_kbkqr"]
 [ext_resource type="AudioStream" uid="uid://c4d6s5ya4hpno" path="res://assets/audios/DavidKBD - Cosmic Pack 02 - Galactic Pulse-full.ogg" id="4_7vfay"]
 [ext_resource type="PackedScene" uid="uid://dv1xglj3l6gp2" path="res://Scenes/player3D.tscn" id="6_jv1mv"]
@@ -38,6 +40,8 @@ size = Vector3(5.67505, 4.27979, 0.654419)
 
 [node name="Level" type="Node3D" groups=["Level3D"]]
 script = ExtResource("1_3h8s7")
+enemy = ExtResource("2_3dmm8")
+extra_life = ExtResource("3_41b13")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.642788, 0.766044, 0, -0.766044, 0.642788, 0.5, 5, 2.5)

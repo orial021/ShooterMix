@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cevkax6c3ykvk"]
+[gd_scene load_steps=12 format=3 uid="uid://cevkax6c3ykvk"]
 
 [ext_resource type="Script" path="res://Scripts/level.gd" id="1_3o71s"]
 [ext_resource type="PackedScene" uid="uid://d0r6ir7cykx45" path="res://Scenes/enemy.tscn" id="2_lbgcr"]
 [ext_resource type="Texture2D" uid="uid://ckk6yoj2qe0au" path="res://assets/images/bg-back.png" id="3_hxlqo"]
 [ext_resource type="PackedScene" uid="uid://dhq8trvkvetbe" path="res://Scenes/apple.tscn" id="3_mfvu7"]
+[ext_resource type="PackedScene" uid="uid://bye3dnpn3x323" path="res://Scenes/bullets.tscn" id="4_3fjnc"]
 [ext_resource type="Texture2D" uid="uid://dn1owaq456cu2" path="res://assets/images/bg-stars.png" id="4_kptb4"]
 [ext_resource type="AudioStream" uid="uid://b1sj7xy45wtaf" path="res://assets/Audio/8bit-mix-56351.mp3" id="4_l0dy5"]
 [ext_resource type="Texture2D" uid="uid://ckqgqhn8k8rm3" path="res://assets/images/bg-planet.png" id="5_sj462"]
@@ -20,6 +21,7 @@ point_count = 5
 script = ExtResource("1_3o71s")
 enemy = ExtResource("2_lbgcr")
 apple = ExtResource("3_mfvu7")
+bullet = ExtResource("4_3fjnc")
 
 [node name="Settings" type="Node" parent="."]
 
@@ -28,11 +30,15 @@ stream = ExtResource("4_l0dy5")
 autoplay = true
 
 [node name="Timer" type="Timer" parent="Settings"]
-wait_time = 1.4
+wait_time = 1.35
 autostart = true
 
 [node name="Timer2" type="Timer" parent="Settings"]
-wait_time = 6.0
+wait_time = 10.0
+autostart = true
+
+[node name="Bullet" type="Timer" parent="Settings"]
+wait_time = 7.0
 autostart = true
 
 [node name="Background" type="Node" parent="."]
@@ -95,3 +101,4 @@ position = Vector2(47, 241)
 
 [connection signal="timeout" from="Settings/Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Settings/Timer2" to="." method="_on_timer_2_timeout"]
+[connection signal="timeout" from="Settings/Bullet" to="." method="_on_bullet_timeout"]

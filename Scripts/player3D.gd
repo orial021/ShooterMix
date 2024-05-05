@@ -1,8 +1,9 @@
 extends CharacterBody3D
 class_name Player3D
 
-var shot : PackedScene = preload("res://scenes/shot3D.tscn")
+@export var shot : PackedScene
 var can_shot : bool = false
+
 
 const SPEED = 2.5
 
@@ -11,7 +12,7 @@ func _process(_delta) -> void:
 	anim_ctrl()
 	
 func _input(event):
-	if can_shot and event.is_action_pressed("ui_accept"):
+	if GLOBAL.is_shot and can_shot or can_shot and event.is_action_pressed("ui_accept"):
 		shot_ctrl()
 		
 func tween_ctrl(node, propierty : String, final_val, duration : float) -> void:
@@ -44,7 +45,6 @@ func anim_ctrl() -> void:
 		tween_ctrl($Spaceship/Fire_1, "scale", Vector3(5, 5, 2), 0.5)
 		tween_ctrl($Spaceship/Fire_2, "scale", Vector3(5, 5, 2), 0.5)
 		
-		
 func motion_ctrl() -> void:
 	velocity.x = GLOBAL.get_axis().x * SPEED
 	velocity.z = GLOBAL.get_axis().y * -SPEED
@@ -56,7 +56,6 @@ func shot_ctrl() -> void:
 	get_tree().call_group("Level3D", "add_child", shot_instance)
 	shot_instance.set_global_position($Settings/ShootSpawn.get_global_position())
 	
-
 func _on_crosshair_area_entered(area) -> void:
 	if area.is_in_group("Enemy3D"):
 		can_shot = true
@@ -65,17 +64,8 @@ func _on_crosshair_area_entered(area) -> void:
 		tween_ctrl($Settings/Crosshair/Sprite3D, "rotation", Vector3($Settings/Crosshair/Sprite3D.rotation.x, 0.5, $Settings/Crosshair/Sprite3D.rotation.z), 0.3)
 		$Settings/Crosshair/Sound.play()
 
-
 func _on_crosshair_area_exited(area) -> void:
 	if area.is_in_group("Enemy3D"):
 		can_shot = false
 		tween_ctrl($Settings/Crosshair/Sprite3D, "scale", Vector3(0.3, 0.3, 0.3), 0.2)
 		tween_ctrl($Settings/Crosshair/Sprite3D, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.1)
-
-
-#func _on_crosshair_body_entered(body):
-	#if body is Enemy3D:
-		#can_shot = true
-		#tween_ctrl($Settings/Crosshair/Sprite3D, "scale", Vector3(0.6, 0.6, 0.6), 0.2)
-		#tween_ctrl($Settings/Crosshair/Sprite3D, "modulate", Color(255, 0, 0, 1.0), 0.1)
-		#$Settings/Crosshair/Sound.play()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bt7sc6vp545ee"]
 
-[ext_resource type="Script" path="res://assets/scripts/chunk.gd" id="1_dtg4l"]
+[ext_resource type="Script" path="res://Scripts/chunk.gd" id="1_dtg4l"]
 [ext_resource type="MeshLibrary" uid="uid://y1fkrwens4wr" path="res://assets/GridMap/MeshLibrary.tres" id="1_lfee1"]
 
 [node name="Chunk" type="Node3D"]
