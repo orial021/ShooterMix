@@ -11,14 +11,30 @@ var is_shot : bool = false
 var bullets : int = 8
 var save_path = "user://save_game.dat"
 var game_data : Dictionary = {
-	"score" : 300,
-	"life" : 5,
+	"score" : 0,
+	"life" : 100,
 	"points" : 0,
-	"level" : 1,
-	"bullets" : 12
+	"level" : 0,
+	"bullets" : 0,
+	"speed" : 0
 }
-
+#
+#func start() -> void:
+	#score = 0
+	#life = 1
+	#points = 0
+	#speed = 3
+	#level = 1
+	#bullets = 8
+	
 func save_game() -> void:
+	game_data["score"] = score
+	game_data["life"] = life
+	game_data["points"] = points
+	game_data["level"] = level
+	game_data["bullets"] = bullets
+	game_data["speed"] = speed
+	
 	var save_file = FileAccess.open(save_path, FileAccess.WRITE)
 	
 	save_file.store_var(game_data)

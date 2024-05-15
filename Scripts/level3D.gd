@@ -3,7 +3,7 @@ extends Node3D
 @export var enemy : PackedScene
 @export var extra_life : PackedScene
 
-var SPEED = 2
+var SPEED = 2 + GLOBAL.level
 
 
 func _ready() -> void:

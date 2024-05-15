@@ -2,6 +2,8 @@ extends CanvasLayer
 
 func _ready() -> void:
 	$Control/Fade/AnimationPlayer.play("fade_in")
+	$Control/MarginContainer/Pause.get_popup().connect("id_pressed", Callable(self, "_on_pause_item_selected"))
+	
 	
 func _process(_delta) -> void:
 	%Score.set_text("SCORE: " + str(GLOBAL.points))
@@ -56,3 +58,25 @@ func _on_down_button_down():
 
 func _on_down_button_up():
 	Input.action_release("ui_down")
+
+
+func _on_pause_item_selected(id):
+	match id:
+		-1: #pause
+			get_tree().paused = true
+		0: #reanudar
+			get_tree().paused = false
+		1: #guardar
+			GLOBAL.save_game()
+			print("juego guardado")
+		2: # menu
+			get_tree().paused = false
+			get_tree().change_scene_to_file("res://Scenes/menu.tscn")
+	
+func _on_pause_about_to_popup():
+	#if get_tree().paused:
+		#get_tree().paused = false
+		#$Control/MarginContainer/Pause.text = "PAUSA"
+	#else:
+	get_tree().paused = true
+		#$Control/MarginContainer/Pause.text = "REANUDAR"

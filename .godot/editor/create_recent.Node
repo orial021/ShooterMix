@@ -1,4 +1,5 @@
 MenuButton
+OptionButton
 Button
 HBoxContainer
 VBoxContainer
@@ -11,5 +12,3 @@ AnimatedSprite2D
 Area2D
 TextureButton
 MarginContainer
-BoxContainer
-CanvasGroup

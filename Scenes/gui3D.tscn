@@ -134,7 +134,7 @@ text = "SCORE: 0"
 [node name="Lifes" type="Label" parent="Control/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 8
+size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "LIFES: 1"
@@ -147,8 +147,21 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 20
 text = "LEVEL 1"
 
+[node name="Pause" type="MenuButton" parent="Control/MarginContainer"]
+process_mode = 3
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "PAUSE"
+item_count = 3
+popup/item_0/text = "REANUDAR"
+popup/item_0/id = 0
+popup/item_1/text = "GUARDAR"
+popup/item_1/id = 1
+popup/item_2/text = "MENU"
+popup/item_2/id = 2
+
 [node name="Fade" type="ColorRect" parent="Control"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -210,6 +223,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 texture_normal = ExtResource("7_8kajr")
 
+[connection signal="about_to_popup" from="Control/MarginContainer/Pause" to="." method="_on_pause_about_to_popup"]
 [connection signal="animation_finished" from="Control/Fade/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="Control/Fade/Animation" to="." method="_on_animation_animation_finished"]
 [connection signal="button_down" from="Control/VBoxContainer/Up" to="." method="_on_up_button_down"]

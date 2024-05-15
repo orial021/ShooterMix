@@ -31,7 +31,7 @@ func _on_area_2d_body_entered(body) -> void:
 		if GLOBAL.life <= 0:
 			body.queue_free()
 		else:
-			return
+			GLOBAL.score += 100
 		
 		
 

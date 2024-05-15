@@ -7,6 +7,7 @@ func _ready() -> void:
 	GLOBAL.speed = 3
 	GLOBAL.level = 1
 	GLOBAL.can_change = false
+	GLOBAL.bullets = 8
 	
 
 func _on_restart_pressed():

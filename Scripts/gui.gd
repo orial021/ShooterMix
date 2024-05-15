@@ -26,12 +26,12 @@ func _on_animation_animation_finished(anim_name):
 			get_tree().change_scene_to_file("res://Scenes/level3D.tscn")
 
 func _on_insert_coin_pressed():
-	if get_tree().paused:
-		get_tree().paused = false
-		$Scoreboard/MarginContainer/Pause.text = "PAUSA"
-	else:
-		get_tree().paused = true
-		$Scoreboard/MarginContainer/Pause.text = "REANUDAR"
+	#if get_tree().paused:
+		#get_tree().paused = false
+		#$Scoreboard/MarginContainer/Pause.text = "PAUSA"
+	#else:
+	get_tree().paused = true
+		#$Scoreboard/MarginContainer/Pause.text = "REANUDAR"
 	
 func _on_pause_about_to_popup():
 	pass # Replace with function body.
@@ -44,5 +44,6 @@ func _on_menu_item_selected(id):
 			GLOBAL.save_game()
 			print("juego guardado")
 		2: # Salir
+			get_tree().paused = false
 			get_tree().change_scene_to_file("res://Scenes/menu.tscn")
 

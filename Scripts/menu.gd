@@ -5,6 +5,7 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	get_tree().paused = false
+	#GLOBAL.start()
 	$Fade/AnimationPlayer.play("Fade_out")
 
 func _on_exit_pressed():
@@ -18,11 +19,25 @@ func _on_animation_player_animation_finished(anim_name):
 
 
 func _on_load_pressed():
-	GLOBAL.load_game()
 	get_tree().paused = false
-	if GLOBAL.level % 2 == 0:
+	GLOBAL.load_game()
+	if GLOBAL.level % 2 == 0 and GLOBAL.level != 0:
+		GLOBAL.load_game()
+		GLOBAL.score = GLOBAL.game_data["score"]
+		GLOBAL.life = GLOBAL.game_data["life"]
+		GLOBAL.points = GLOBAL.game_data["points"]
+		GLOBAL.level = GLOBAL.game_data["level"]
+		GLOBAL.bullets = GLOBAL.game_data["bullets"]
+		GLOBAL.speed = GLOBAL.game_data["speed"]
 		get_tree().change_scene_to_file("res://Scenes/level3D.tscn")
 	else:
+		GLOBAL.load_game()
+		GLOBAL.score = GLOBAL.game_data["score"]
+		GLOBAL.life = GLOBAL.game_data["life"]
+		GLOBAL.points = GLOBAL.game_data["points"]
+		GLOBAL.level = GLOBAL.game_data["level"]
+		GLOBAL.bullets = GLOBAL.game_data["bullets"]
+		GLOBAL.speed = GLOBAL.game_data["speed"]
 		get_tree().change_scene_to_file("res://Scenes/level.tscn")
 
 
